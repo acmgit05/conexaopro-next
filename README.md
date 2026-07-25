@@ -26,4 +26,4 @@ professores e projetos em um único ambiente digital.
 
 ## Autor
 
-Projeto desenvolvido para o SENAI Barreto.
+Projeto desenvolvido para o SENAI Barreto pela turma de FrontEnd 2026.
