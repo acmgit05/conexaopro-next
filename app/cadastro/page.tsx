@@ -1,5 +1,6 @@
 'use client';
 
+import { MATRICULAS_VALIDAS } from '@/lib/matriculas';
 import { useState } from 'react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
@@ -13,6 +14,8 @@ export default function CadastroPage() {
   const [carregando, setCarregando] = useState(false);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  console.log("Validação de matrícula iniciada");
+
     event.preventDefault();
 
     setErro('');
@@ -24,6 +27,12 @@ export default function CadastroPage() {
     }
 
     setCarregando(true);
+
+    if (!MATRICULAS_VALIDAS.includes(matricula.trim())) {
+      setErro('Matrícula não autorizada.');
+      setCarregando(false);
+      return;
+    }
 
     const email = `${matricula.trim()}@conexaopro.com`;
     const senha = dataNascimento;
